@@ -1,0 +1,125 @@
+.login.login-4 .login-signin,
+.login.login-4 .login-signin2,
+.login.login-4 .login-signup,
+.login.login-4 .login-forgot {
+	display: none;
+}
+
+.login.login-4.login-signin-on .login-signup {
+	display: none;
+}
+.login.login-4.login-signin-on .login-signin {
+	display: block;
+}
+.login.login-4.login-signin-on .login-signin2 {
+	display: none;
+}
+.login.login-4.login-signin-on .login-forgot {
+	display: none;
+}
+
+.login.login-4.login-signin2-on .login-signup {
+	display: none;
+}
+.login.login-4.login-signin2-on .login-signin {
+	display: none;
+}
+.login.login-4.login-signin2-on .login-signin2 {
+	display: block;
+}
+.login.login-4.login-signin2-on .login-forgot {
+	display: none;
+}
+
+.login.login-4.login-signup-on .login-signup {
+	display: block;
+}
+.login.login-4.login-signup-on .login-signin {
+	display: none;
+}
+.login.login-4.login-signup-on .login-signin2 {
+	display: none;
+}
+.login.login-4.login-signup-on .login-forgot {
+	display: none;
+}
+
+.login.login-4.login-forgot-on .login-signup {
+	display: none;
+}
+.login.login-4.login-forgot-on .login-signin {
+	display: none;
+}
+.login.login-4.login-forgot-on .login-signin2 {
+	display: none;
+}
+.login.login-4.login-forgot-on .login-forgot {
+	display: block;
+}
+
+.login.login-4 .login-form {
+	width: 100%;
+	max-width: 450px;
+}
+
+#showPass .iconEye{
+	cursor: pointer;
+}
+
+.bg-overlay {
+	background: linear-gradient(0deg, rgb(21 33 26), #8be8e58e);
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.bg-overlay-gradient {
+	background-color: rgba(0, 221, 144, 0.6);
+}
+
+@media (max-width: 575.98px) {
+	.login.login-4 .login-form {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+.footer {
+	background: #202942;
+	padding: 60px 0;
+	position: relative;
+	color: #adb5bd;
+}
+
+.footer.footer-bar {
+	padding: 30px 0;
+	border-top: 1px solid #3d4349;
+}
+
+.footer {
+	position: absolute;
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	font-size: 12px;
+	line-height: 1.4;
+	bottom: 0;
+}
+
+.footer .copyright a {
+	color: #fcdb00;
+}
+
+.footer .copyright a:hover,
+#footer .copyright a:active {
+	color: #ffc107;
+}
