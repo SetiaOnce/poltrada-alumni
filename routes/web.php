@@ -62,39 +62,41 @@ Route::get('/logout', function () {
 });
 //  ===========>> END LOGIN ADMIN<<============== //
 // App Admin
-Route::group(['prefix' => 'app_admin'], function () {
-    Route::get('/dashboard', function () {
-        Artisan::call('cache:clear');
-        Artisan::call('config:clear');
-        Artisan::call('view:clear');
-        if(!session()->get('login_akses')) { 
-            return redirect('/login'); 
-        } 
-        return view('backend.index');
-    });
-    Route::get('/user_profile', function () {
-        if(!session()->get('login_akses')) { 
-            return redirect('/login'); 
-        } 
-        return view('backend.common.profile');
-    });
-    //  ===========>> CUMMON  <<============== //
-    Route::get('/load_user_profile', [CommonController::class, 'loaduserProfile']);
-    Route::get('/load_profile', [CommonController::class, 'loadProfile']);
-    Route::get('/load_app_profile_site', [CommonController::class, 'loadProfileApp']);
-    Route::get('/ajax_get_count_widget', [CommonController::class, 'widgetCount']);
-    //  ===========>> END COMMON <<============== //  
-    Route::group(['prefix' => 'settings'], function () {
-        Route::get('/profileapps', [ProfileAppController::class, 'index']);
-        Route::controller(ProfileAppController::class)->group(function(){
-            Route::get('/load_profileapps', 'loadProfileApp');
-            Route::post('/profileapps_update', 'profileAppUpdate');
+Route::group(['middleware' => 'Session'], function() {
+    Route::group(['prefix' => 'app_admin'], function () {
+        Route::get('/dashboard', function () {
+            Artisan::call('cache:clear');
+            Artisan::call('config:clear');
+            Artisan::call('view:clear');
+            if(!session()->get('login_akses')) { 
+                return redirect('/login'); 
+            } 
+            return view('backend.index');
         });
-        Route::get('/banner', [BannerController::class, 'index']);
+        Route::get('/user_profile', function () {
+            if(!session()->get('login_akses')) { 
+                return redirect('/login'); 
+            } 
+            return view('backend.common.profile');
+        });
+        //  ===========>> CUMMON  <<============== //
+        Route::get('/load_user_profile', [CommonController::class, 'loaduserProfile']);
+        Route::get('/load_profile', [CommonController::class, 'loadProfile']);
+        Route::get('/load_app_profile_site', [CommonController::class, 'loadProfileApp']);
+        Route::get('/ajax_get_count_widget', [CommonController::class, 'widgetCount']);
+        //  ===========>> END COMMON <<============== //  
+        Route::group(['prefix' => 'settings'], function () {
+            Route::get('/profileapps', [ProfileAppController::class, 'index']);
+            Route::controller(ProfileAppController::class)->group(function(){
+                Route::get('/load_profileapps', 'loadProfileApp');
+                Route::post('/profileapps_update', 'profileAppUpdate');
+            });
+            Route::get('/banner', [BannerController::class, 'index']);
+        });
+        Route::get('/data-alumni', [DataAlumniController::class, 'index']);
+        Route::get('/report_tracer_study', [ReportTracerStudyController::class, 'index']);
+        Route::get('/kegiatan', [KegiatanController::class, 'index']);
     });
-    Route::get('/data-alumni', [DataAlumniController::class, 'index']);
-    Route::get('/report_tracer_study', [ReportTracerStudyController::class, 'index']);
-    Route::get('/kegiatan', [KegiatanController::class, 'index']);
 });
 // for setting banner
 Route::controller(BannerController::class)->group(function(){
